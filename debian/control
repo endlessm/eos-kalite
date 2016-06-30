@@ -1,0 +1,14 @@
+Source: eos-kalite-system-helper
+Section: desktop
+Priority: optional
+Maintainer: Niv Sardi <xaiki@endlessm.com>
+Build-Depends: debhelper (>=9), dh-systemd (>= 1.5)
+Standards-Version: 3.9.8
+Homepage: https://endlessm.com
+Vcs-Git: git://github.com/endlessm/eos-kalite-system-helper.git
+
+Package: eos-kalite-system-helper
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A simple helper to integrate the KA Lite flatpak with the OS
+ Used internally at Endless

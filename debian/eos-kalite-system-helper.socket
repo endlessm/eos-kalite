@@ -1,0 +1,9 @@
+[Unit]
+Description=KA Lite Server
+
+[Socket]
+ListenStream=8008
+BindToDevice=lo
+
+[Install]
+WantedBy=sockets.target
