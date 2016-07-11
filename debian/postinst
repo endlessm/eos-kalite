@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -eu
+
+# creating kalite user if it isn't already there
+if ! getent passwd kalite >/dev/null; then
+        adduser --system --force-badname --quiet \
+            --no-create-home \
+            --home /var/lib/kalite \
+            --shell /bin/bash \
+            --group \
+            kalite
+fi
+
+# create /var/lib/kalite or update ownership existing directory
+if [ -d /var/lib/kalite ]; then
+	chown -R kalite:kalite /var/lib/kalite
+else
+	install -d -m0755 -o kalite -g kalite /var/lib/kalite
+fi
+
+#DEBHELPER#
+
+exit 0
+
