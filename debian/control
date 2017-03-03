@@ -1,14 +1,32 @@
-Source: eos-kalite-system-helper
+Source: eos-kalite
 Section: desktop
 Priority: optional
-Maintainer: Niv Sardi <xaiki@endlessm.com>
-Build-Depends: debhelper (>=9), dh-systemd (>= 1.5)
+Maintainer: Mario Sanchez Prada <mario@endlessm.com>
+Build-Depends: debhelper (>=9),
+         dh-autoreconf,
+         dh-systemd (>= 1.5)
 Standards-Version: 3.9.8
 Homepage: https://endlessm.com
-Vcs-Git: git://github.com/endlessm/eos-kalite-system-helper.git
+Vcs-Git: git://github.com/endlessm/eos-kalite.git
 
 Package: eos-kalite-system-helper
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
 Description: A simple helper to integrate the KA Lite flatpak with the OS
  Used internally at Endless
+
+Package: eos-kalite-tools
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         eos-kalite-system-helper,
+         flatpak,
+         gir1.2-flatpak-1.0,
+         gir1.2-glib-2.0,
+         ostree,
+         python3,
+         python3-gi
+Description: EOS-specific tools to manage KA Lite installations
+ For now, it contains eos-kalite-backup to allow creating and
+ restoring backups of the KA Lite app and its contents.

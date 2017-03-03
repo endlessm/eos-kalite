@@ -1,3 +1,9 @@
+eos-kalite (1.0.0) eos; urgency=medium
+
+  * Renamed to eos-kalite to add eos-kalite-tools as a new package.
+
+ -- Mario Sanchez Prada <mario@endlessm.com>  Tue, 28 Feb 2017 12:05:53 +0000
+
 eos-kalite-system-helper (0.0.1) eos; urgency=medium
 
   * Initial release

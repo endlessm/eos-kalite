@@ -3,12 +3,11 @@ Upstream-Name: eos-kalite-system-helper
 Source: <url://endlessm.com>
 
 Files: *
-Copyright: <2016> Endless Computers INC
-           <2016> Niv Sardi <xaiki@endlessm.com>
+Copyright: <2016, 2017> Endless Computers, Inc.
 License: GPL-2.0+
 
 Files: debian/*
-Copyright: 2016 Niv Sardi <xaiki@endlessm.com>
+Copyright: 2016, 2017 Endless Computers, Inc.
 License: GPL-2.0+
 
 License: GPL-2.0+
