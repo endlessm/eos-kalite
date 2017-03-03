@@ -36,7 +36,7 @@ from gi.repository import GLib
 gi.require_version('OSTree', '1.0')
 from gi.repository import OSTree
 
-from utils import die
+from utils import die, filesystem_for_path
 
 # Path to the flatpak system installation.
 FLATPAK_SYSTEM_INSTALLATION = '/var/lib/flatpak'
@@ -317,8 +317,12 @@ if __name__ == '__main__':
     test_branch = 'eos3'
     test_backup_dir = os.path.expanduser('~/BACKUP')
 
-    installation = Flatpak.Installation.new_system()
+    target_fs = filesystem_for_path(os.path.dirname(test_backup_dir))
+    if target_fs != 'ext3' and target_fs != 'ext4':
+        die("Destination path at {} not on a 'ext3' or 'ext4' filesystem!"
+            .format(parsed_args.path))
 
+    installation = Flatpak.Installation.new_system()
     # Make sure the target app is installed first.
     print("\n1. Making sure {} is installed before backing up...".format(test_app_id))
     try:

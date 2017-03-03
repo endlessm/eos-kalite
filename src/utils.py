@@ -27,3 +27,19 @@ import sys
 def die(message):
     print(message, file=sys.stderr)
     sys.exit(1)
+
+
+def filesystem_for_path(path):
+    basedir = path
+    while not os.path.exists(basedir):
+        basedir = os.path.dirname(basedir)
+
+    dev = os.stat(basedir).st_dev
+    major_minor = '{}:{}'.format(os.major(dev), os.minor(dev))
+    with open('/proc/self/mountinfo') as mountinfo:
+        for line in mountinfo:
+            fields = line.split()
+            if fields[2] == major_minor:
+                return fields[8]
+
+    return None

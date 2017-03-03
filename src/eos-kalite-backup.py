@@ -30,7 +30,7 @@ import signal
 import subprocess
 import sys
 
-from utils import die
+from utils import die, filesystem_for_path
 
 KALITE_APP_ID = 'org.learningequality.KALite'
 KALITE_APP_REMOTE_NAME = 'eos-apps'
@@ -205,9 +205,27 @@ def restore_kalite_data(path, interactive=True):
     start_kalite_services()
 
     print("Successfully restored KA Lite data from {}!".format(backup_path))
+
+
+def backup_kalite_full(path, interactive=True):
+    print("Creating a FULL backup of KA Lite (app + data)...")
+    backup_kalite_app(path, interactive)
+    backup_kalite_data(path, interactive)
+    print("Successfully created a FULL backup of KA Lite!")
+
+
+def restore_kalite_full(path, interactive=True):
+    print("Restoring a FULL backup of KA Lite (app + data)...")
+    restore_kalite_app(path, interactive)
+    restore_kalite_data(path, interactive)
+    print("Successfully restored a FULL backup of KA Lite!")
+
+
 SUPPORTED_COMMANDS = {
+    'backup' : backup_kalite_full,
     'backup-app' : backup_kalite_app,
     'backup-data' : backup_kalite_data,
+    'restore' : restore_kalite_full,
     'restore-app' : restore_kalite_app,
     'restore-data' : restore_kalite_data
 }
@@ -247,6 +265,14 @@ if __name__ == '__main__':
     # access (e.g. installing apps, restarting services...).
     if os.geteuid() != 0:
         die("This script needs to be run as the 'root' user!")
+
+    # In order to make the backup / restore process easier and faster,
+    # we require that the destination path must be on a ext partition.
+    target_fs = filesystem_for_path(os.path.dirname(parsed_args.path))
+    if target_fs != 'ext3' and target_fs != 'ext4':
+        die("Destination path at {} not on a 'ext3' or 'ext4' filesystem!\n"
+            "Please reformat the target partition with an 'ext4' filesystem"
+            .format(parsed_args.path))
 
     # Make sure there's a way to interrupt progress even
     # when running long operations (e.g. restoring app).
