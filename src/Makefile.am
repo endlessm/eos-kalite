@@ -2,6 +2,8 @@ bin_SCRIPTS = eos-kalite-backup
 
 dist_pkgdata_SCRIPTS = \
 	eos-kalite-backup.py \
+	flatpakutils.py \
+	utils.py \
 	$(NULL)
 
 do_edit = sed \
