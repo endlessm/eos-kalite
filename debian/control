@@ -4,7 +4,8 @@ Priority: optional
 Maintainer: Mario Sanchez Prada <mario@endlessm.com>
 Build-Depends: debhelper (>=9),
          dh-autoreconf,
-         dh-systemd (>= 1.5)
+         dh-systemd (>= 1.5),
+         systemd
 Standards-Version: 3.9.8
 Homepage: https://endlessm.com
 Vcs-Git: git://github.com/endlessm/eos-kalite.git

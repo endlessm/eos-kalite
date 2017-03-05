@@ -1,6 +1,7 @@
 eos-kalite (1.0.0) eos; urgency=medium
 
   * Renamed to eos-kalite to add eos-kalite-tools as a new package.
+  * Moved the systemd files out of the debian/, into the top source directory.
 
  -- Mario Sanchez Prada <mario@endlessm.com>  Tue, 28 Feb 2017 12:05:53 +0000
 
