@@ -5,6 +5,7 @@ Maintainer: Mario Sanchez Prada <mario@endlessm.com>
 Build-Depends: debhelper (>=9),
          dh-autoreconf,
          dh-systemd (>= 1.5),
+         pkg-config,
          systemd
 Standards-Version: 3.9.8
 Homepage: https://endlessm.com
