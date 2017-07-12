@@ -244,6 +244,7 @@ def _update_deploy_file_for_app_and_remote(app_id, old_remote_name, new_remote_n
         dest_file = Gio.File.new_for_path(tmp_deploy_file.name)
         out_stream = dest_file.append_to(Gio.FileCreateFlags.NONE, None)
         out_stream.write_bytes(new_variant.get_data_as_bytes())
+        out_stream.close()
 
         os.chmod(tmp_deploy_file.name, 0o644)
         shutil.copy(tmp_deploy_file.name, deploy_file_path, follow_symlinks=True)
