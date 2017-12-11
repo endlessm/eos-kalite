@@ -25,8 +25,8 @@ same machine in the future or as many other machines as needed.
 
 This tool (`eos-kalite-backup`) allows "copying" any pre-installed data (videos,
 language packs..) from the source machine into the target ones, so that it is
-possible to prepare a specific configuration and curate a selection of contents
-in one placem, and then have all of that easily replicated in other places.
+possible to prepare a specific configuration and curate a selection of content
+in one place, and then have all of that easily replicated in other places.
 
 Note that this is a custom tool only supported on EndlessOS, as it expects
 certain components to be available in both the target machines, such as the
